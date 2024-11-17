@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    body{
+        background-color: #597081;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+    .img-size{
+    width: 100%;
+    height: 200px; 
+    object-fit: cover; 
+
+    }
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+    }
+</style>
+<div class="container py-5">
+    <h1 class="text-center">Blog Posts</h1>
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ post.poster.url }}" class="card-img-top img-size" alt="{{ post.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.content|truncatewords:20 }}</p>
+                    <a href="{% url 'posts_detail' post.id %}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - My Website{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+    .video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; 
+    opacity: 0.8; 
+}
+
+
+.bg-img {
+    position: relative;
+    overflow: hidden; 
+    color: white; 
+}
+
+    body{
+        background-color: #597081;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+    .down-arrow {
+        position: absolute;
+        bottom: 90px;
+        font-size: 30px;
+        color: rgb(0, 163, 217);
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+
+    .down-arrow:hover {
+        transform: translateY(5px);
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+
+<section  class="d-flex flex-column justify-content-center align-items-center bg-img vh-100">
+
+    
+    <video autoplay muted loop class="video-bg">
+        <source src="{% static 'video/prog_bg.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    
+    <div class="text-center position-relative">
+        <p style="color: rgb(0, 163, 217);">Hi, my name is</p>
+        <h1>Fahad Alabdulkarim</h1>
+        <hr>
+        <p>I build websites</p>
+    </div>
+    <a href="#info" class="down-arrow">
+        <i class="fa fa-arrow-down"></i>
+    </a>
+</section>
+
+<section id="info" style="background-color: #7EA0B7;" class="mb-0 pb-0" style="background-color: #7EA0B7;">
+    <div class="jumbotron d-flex flex-column justify-content-center align-items-center  min-vh-100 mb-0 pb-0" style="background-color: #7EA0B7;">
+        <div class="d-flex flex-row gap-2">
+            <img src="{% static 'images/download.jpeg' %}"  height="300" width="300" alt="Fahad">
+            <div class="ml-4">
+                <h1> About me</h1>
+                <h3>I am a graduate of King Fahd University of Petroleum and Minerals, holding a Bachelor's degree in Computer Science. I have a strong passion for web development, where I enjoy creating dynamic and user-friendly applications. Constantly seeking to expand my skill set, I am particularly interested in exploring new tools and technologies. My goal is to leverage my knowledge to develop innovative solutions that make a positive impact.</h3>
+            </div>
+        </div>
+        <div class="d-flex flex-row gap-2 mb-4 mt-5">
+            <a href="{% url 'about' %}" class="btn btn-info btn-lg ">Learn more</a>
+            <a href="{% url 'contact_us' %}" class="btn btn-dark btn-lg">Contact me!</a>
+        </div>
+        
+    </div>
+</section>
+
+
+
+
+
+{% endblock %}
